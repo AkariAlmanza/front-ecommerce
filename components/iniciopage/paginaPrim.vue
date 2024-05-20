@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      inico
+      Inicio
     </v-card-title>
     <v-card-actions>
       Botones
