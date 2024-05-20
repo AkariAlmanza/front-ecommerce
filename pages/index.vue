@@ -1,14 +1,14 @@
 <template>
-  <pagina-inicio />
+  <velasIniVue />
 </template>
 
 <script>
-import paginaPrim from '@/components/iniciopage/paginaPrim.vue'
+import velasIniVue from '@/components/iniciopage/velas-ini.vue'
 
 export default {
   name: 'IndexPage',
   components: {
-    paginaPrim
+    velasIniVue
   },
   layout: 'iniciopage'
 }
