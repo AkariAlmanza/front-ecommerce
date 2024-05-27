@@ -53,7 +53,7 @@ function fetchProducts () {
     { id: 1, name: 'Spiced Mint', price: 9.99, image: '/images/producto1.png' },
     { id: 2, name: 'Sweet Strawberry', price: 9.99, image: '/images/producto2.png' },
     { id: 3, name: 'Cool Blueberries', price: 9.99, image: '/images/producto3.png' }
-    // más productos
+
   ]
 }
 

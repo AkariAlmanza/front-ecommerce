@@ -28,14 +28,14 @@ export default {
 }
 
 function fetchProductById (id) {
-  // Aquí iría la llamada a la API para obtener el producto por ID
-  return {
-    id,
-    name: 'Nombre del Producto',
-    price: 100,
-    description: 'Descripción del producto.',
-    image: 'ruta/a/la/imagen.jpg'
-  }
+  const products = [
+    { id: 1, name: 'Spiced Mint', price: 9.99, image: '/images/producto1.png', description: 'Descripción del Producto 1' },
+    { id: 2, name: 'Sweet Strawberry', price: 9.99, image: '/images/producto2.png', description: 'Descripción del Producto 2' },
+    { id: 3, name: 'Cool Blueberries', price: 9.99, image: '/images/producto3.png', description: 'Descripción del Producto 3' }
+    // más productos si los tienes
+  ]
+
+  return products.find(product => product.id === parseInt(id))
 }
 </script>
 
