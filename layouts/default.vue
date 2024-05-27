@@ -1,21 +1,28 @@
 <template>
   <v-app>
-    <Navbar />
+    <AppHeader />
     <v-main>
-      <Nuxt />
+      <nuxt />
     </v-main>
-    <Footer />
+    <AppFooter />
+    <AppCart ref="cart" />
   </v-app>
 </template>
 
 <script>
-import BarNav from '@/components/BarNav.vue'
-import PagFondo from '@/components/piePag.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import AppCart from '@/components/AppCart.vue'
 
 export default {
   components: {
-    BarNav,
-    PagFondo
+    AppHeader,
+    AppFooter,
+    AppCart
   }
 }
 </script>
+
+<style>
+/* estilos personalizados */
+</style>

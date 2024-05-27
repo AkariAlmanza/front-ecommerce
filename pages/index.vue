@@ -1,23 +1,36 @@
 <template>
   <v-container>
+    <!-- Imagen destacada -->
     <v-row>
       <v-col cols="12">
-        <h1>Welcome to My E-commerce</h1>
-        <v-carousel>
-          <v-carousel-item v-for="i in 4" :key="i"></v-carousel-item>
-        </v-carousel>
+        <v-img src="/images/principal.jpg" alt="Imagen destacada" aspect-ratio="2.75" />
       </v-col>
     </v-row>
+
+    <!-- Productos -->
     <v-row>
-      <v-col v-for="product in products" :key="product.id" cols="12" sm="6" md="4">
-        <v-card>
+      <v-col cols="12">
+        <h2>Productos Destacados</h2>
+      </v-col>
+      <v-col v-for="product in products" :key="product.id" cols="12" md="4">
+        <v-card :to="`/product/${product.id}`">
+          <v-img :src="product.image" aspect-ratio="1.75" />
           <v-card-title>{{ product.name }}</v-card-title>
-          <v-card-subtitle>{{ product.price }}</v-card-subtitle>
-          <v-card-actions>
-            <v-btn text @click="addToCart(product)">
-              Add to Cart
-            </v-btn>
-          </v-card-actions>
+          <v-card-subtitle>{{ product.price }} USD</v-card-subtitle>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <!-- Reseñas de Clientes -->
+    <v-row>
+      <v-col cols="12">
+        <h2>Reseñas de Clientes</h2>
+      </v-col>
+      <v-col v-for="review in reviews" :key="review.id" cols="12" md="4">
+        <v-card>
+          <v-card-title>{{ review.name }}</v-card-title>
+          <v-card-subtitle>{{ review.date }}</v-card-subtitle>
+          <v-card-text>{{ review.text }}</v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -25,21 +38,36 @@
 </template>
 
 <script>
+
 export default {
-  data () {
-    return {
-      products: [
-        { id: 1, name: 'Product 1', price: '$10.00', image: 'https://picsum.photos/200/300' },
-        { id: 2, name: 'Product 2', price: '$20.00', image: 'https://picsum.photos/200/300' },
-        // Add more products as needed
-      ]
-    }
-  },
-  methods: {
-    addToCart (product) {
-      // Implement add to cart functionality
-      console.log(`${product.name} added to cart`)
-    }
+  async asyncData () {
+    const products = await fetchProducts()
+    const reviews = await fetchReviews()
+    return { products, reviews }
   }
 }
+
+function fetchProducts () {
+  // Simulando una llamada a una API para obtener productos
+  return [
+    { id: 1, name: 'Producto 1', price: 100, image: 'https://via.placeholder.com/400x300' },
+    { id: 2, name: 'Producto 2', price: 200, image: 'https://via.placeholder.com/400x300' },
+    { id: 3, name: 'Producto 3', price: 300, image: 'https://via.placeholder.com/400x300' }
+    // más productos
+  ]
+}
+
+function fetchReviews () {
+  // Simulando una llamada a una API para obtener reseñas de clientes
+  return [
+    { id: 1, name: 'Cliente 1', date: '2024-05-25', text: 'Excelente producto, muy recomendado.' },
+    { id: 2, name: 'Cliente 2', date: '2024-05-24', text: 'Buena calidad y entrega rápida.' },
+    { id: 3, name: 'Cliente 3', date: '2024-05-23', text: 'Muy satisfecho con mi compra.' }
+    // más reseñas
+  ]
+}
 </script>
+
+<style scoped>
+/* estilos personalizados */
+</style>
