@@ -10,7 +10,7 @@
     <!-- Productos -->
     <v-row>
       <v-col cols="12">
-        <h2>Productos Destacados</h2>
+        <h2>Productos</h2>
       </v-col>
       <v-col v-for="product in products" :key="product.id" cols="12" md="4">
         <v-card :to="`/product/${product.id}`">
@@ -24,7 +24,7 @@
     <!-- Reseñas de Clientes -->
     <v-row>
       <v-col cols="12">
-        <h2>Reseñas de Clientes</h2>
+        <h2>Testimonios</h2>
       </v-col>
       <v-col v-for="review in reviews" :key="review.id" cols="12" md="4">
         <v-card>
@@ -50,9 +50,9 @@ export default {
 function fetchProducts () {
   // Simulando una llamada a una API para obtener productos
   return [
-    { id: 1, name: 'Producto 1', price: 100, image: 'https://via.placeholder.com/400x300' },
-    { id: 2, name: 'Producto 2', price: 200, image: 'https://via.placeholder.com/400x300' },
-    { id: 3, name: 'Producto 3', price: 300, image: 'https://via.placeholder.com/400x300' }
+    { id: 1, name: 'Spiced Mint', price: 9.99, image: '/images/producto1.png' },
+    { id: 2, name: 'Sweet Strawberry', price: 9.99, image: '/images/producto2.png' },
+    { id: 3, name: 'Cool Blueberries', price: 9.99, image: '/images/producto3.png' }
     // más productos
   ]
 }
@@ -60,9 +60,9 @@ function fetchProducts () {
 function fetchReviews () {
   // Simulando una llamada a una API para obtener reseñas de clientes
   return [
-    { id: 1, name: 'Cliente 1', date: '2024-05-25', text: 'Excelente producto, muy recomendado.' },
-    { id: 2, name: 'Cliente 2', date: '2024-05-24', text: 'Buena calidad y entrega rápida.' },
-    { id: 3, name: 'Cliente 3', date: '2024-05-23', text: 'Muy satisfecho con mi compra.' }
+    { id: 1, name: 'Laura', date: '2024-05-25', text: 'Excelente producto, muy recomendado.' },
+    { id: 2, name: 'Alejandro', date: '2024-05-24', text: 'Buena calidad y entrega rápida.' },
+    { id: 3, name: 'Julieta', date: '2024-05-23', text: 'Muy satisfecha con mi compra.' }
     // más reseñas
   ]
 }
