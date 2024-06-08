@@ -9,9 +9,20 @@
           <v-list-item v-for="(item, index) in cartItems" :key="index">
             <v-list-item-content>
               <v-list-item-title>{{ item.name }}</v-list-item-title>
+              <v-list-item-subtitle>Cantidad: {{ item.quantity }}</v-list-item-subtitle>
               <v-list-item-subtitle>{{ item.price }} USD</v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-action>
+              <v-btn icon @click="decreaseQuantity(item)">
+                <v-icon color="blue">
+                  mdi-minus
+                </v-icon>
+              </v-btn>
+              <v-btn icon @click="increaseQuantity(item)">
+                <v-icon color="blue">
+                  mdi-plus
+                </v-icon>
+              </v-btn>
               <v-btn icon @click="removeFromCart(index)">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
@@ -20,7 +31,7 @@
         </v-list>
       </v-card-text>
       <v-card-actions>
-        <v-btn color="primary" text @click="dialog = false">
+        <v-btn color="#56B280" text @click="dialog = false">
           Cerrar
         </v-btn>
       </v-card-actions>
@@ -44,11 +55,10 @@ export default {
   methods: {
     removeFromCart (index) {
       this.$store.commit('removeFromCart', index)
+    },
+    decreaseQuantity (index) {
+      this.$store.commit('decreaseQuantity', index)
     }
   }
 }
 </script>
-
-<style scoped>
-/* estilos personalizados */
-</style>

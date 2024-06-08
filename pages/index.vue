@@ -52,7 +52,10 @@ function fetchProducts () {
   return [
     { id: 1, name: 'Spiced Mint', price: 9.99, image: '/images/producto1.png' },
     { id: 2, name: 'Sweet Strawberry', price: 9.99, image: '/images/producto2.png' },
-    { id: 3, name: 'Cool Blueberries', price: 9.99, image: '/images/producto3.png' }
+    { id: 3, name: 'Cool Blueberries', price: 9.99, image: '/images/producto3.png' },
+    { id: 4, name: 'Juicy Lemon', price: 9.99, image: '/images/producto4.png' },
+    { id: 5, name: 'Fresh Orange', price: 9.99, image: '/images/producto5.png' },
+    { id: 6, name: 'Fragrant Cinnamon', price: 9.99, image: '/images/producto6.png' }
 
   ]
 }

@@ -5,7 +5,7 @@
       <v-text-field v-model="cardNumber" label="Número de Tarjeta" />
       <v-text-field v-model="expiryDate" label="Fecha de Expiración" />
       <v-text-field v-model="cvv" label="CVV" type="password" />
-      <v-btn color="primary" @click="pay">
+      <v-btn color="#56B280" @click="pay">
         Pagar
       </v-btn>
     </v-form>

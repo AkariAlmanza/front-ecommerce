@@ -1,39 +1,15 @@
 <template>
-  <v-container>
-    <h1>Iniciar Sesión</h1>
-    <v-form>
-      <v-text-field
-        v-model="email"
-        label="Correo Electrónico"
-      />
-      <v-text-field
-        v-model="password"
-        label="Contraseña"
-        type="password"
-      />
-      <v-btn color="primary" @click="login">
-        Iniciar Sesión
-      </v-btn>
-    </v-form>
-  </v-container>
+  <login-user />
 </template>
 
 <script>
+import LoginUser from '@/components/users/LoginUser.vue'
+
 export default {
-  data () {
-    return {
-      email: '',
-      password: ''
-    }
+  name: 'IndexPage',
+  components: {
+    LoginUser
   },
-  methods: {
-    login () {
-      // Aquí iría la lógica para iniciar sesión
-    }
-  }
+  layout: 'login'
 }
 </script>
-
-<style scoped>
-/* estilos personalizados */
-</style>

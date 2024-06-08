@@ -1,7 +1,7 @@
 <template>
-  <v-footer app>
-    <v-col class="text-center" cols="12">
-      © 2024 - Tu Tienda
+  <v-footer app color="black">
+    <v-col class="text-center" cols="12" style="color:aliceblue">
+      Candleaf
     </v-col>
   </v-footer>
 </template>
@@ -11,7 +11,3 @@ export default {
   name: 'AppFooter'
 }
 </script>
-
-<style scoped>
-/* estilos personalizados */
-</style>

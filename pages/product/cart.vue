@@ -1,40 +1,78 @@
 <template>
   <v-container>
-    <h1>Carrito de Compras</h1>
-    <v-list>
-      <v-list-item v-for="(item, index) in cartItems" :key="index">
-        <v-list-item-content>
-          <v-list-item-title>{{ item.name }}</v-list-item-title>
-          <v-list-item-subtitle>{{ item.price }} USD</v-list-item-subtitle>
-        </v-list-item-content>
-        <v-list-item-action>
-          <v-btn icon @click="removeFromCart(index)">
-            <v-icon>mdi-delete</v-icon>
-          </v-btn>
-        </v-list-item-action>
-      </v-list-item>
-    </v-list>
-    <v-btn color="primary" @click="$router.push('/checkout/shipping')">
-      Proceder al Pago
-    </v-btn>
+    <v.row>
+      <v-col cols="12">
+        <v-card>
+          <v-card-title>
+            Carrito de Compras
+          </v-card-title>
+          <v-card-text>
+            <v-list>
+              <v-list-item v-for="item in cartItems" :key="item.id">
+                <v-list-item-avatar>
+                  <img :src="item.image" alt="Product Image">
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.name }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ item.price }} USD</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{ item.quantity }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{ item.price * item.quantity }} USD</v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-btn icon @click="decreaseQuantity(item)">
+                    <v-icon color="blue">
+                      mdi-minus
+                    </v-icon>
+                  </v-btn>
+                  <v-btn icon @click="increaseQuantity(item)">
+                    <v-icon color="blue">
+                      mdi-plus
+                    </v-icon>
+                  </v-btn>
+                  <v-btn icon @click="handleremoveFromCart(item.id)">
+                    <v-icon color="red">
+                      mdi-delete
+                    </v-icon>
+                  </v-btn>
+                </v-list-item-action>
+              </v-list-item>
+            </v-list>
+            <v-divider />
+            <v-card-subtitle>Total: {{ cartTotal }} USD</v-card-subtitle>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="#56B280" @click="checkout">
+              Proceder al checkout
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v.row>
   </v-container>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   computed: {
-    cartItems () {
-      return this.$store.state.cart
-    }
+    ...mapGetters(['cartItems', 'cartTotal'])
   },
   methods: {
-    removeFromCart (index) {
-      this.$store.commit('removeFromCart', index)
+    ...mapMutations(['removeFromCart', 'addToCart']),
+    increaseQuantity (item) {
+      this.addToCart(item)
+    },
+    decreaseQuantity (item) {
+      if (item.quantity > 1) {
+        this.removeFromCart(item.id)
+      }
+    },
+    handleremoveFromCart (productId) {
+      this.removeFromCart(productId)
+    },
+    checkout () {
+      this.$router.push('/checkout/shipping')
     }
   }
 }
 </script>
-
-<style scoped>
-/* estilos personalizados */
-</style>
